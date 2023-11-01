@@ -1,0 +1,9 @@
+.Pokemon_card{
+    border: 1px solid red;
+    border-radius: 0.25rem;
+    display: block;
+}
+
+.pokemom_images{
+    height: 100px;
+}

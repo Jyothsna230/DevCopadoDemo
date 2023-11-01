@@ -1,0 +1,52 @@
+<template>
+    <lightning-card title="Pokemons" icon-name="utility:animal_and_nature">
+
+        <lightning-input label="Pokemons Name" type="search" value={serachvalue} placeholder="Search for Pokemons"
+            variant="label hidden" onchange={handleChange}
+            class="slds-var-m-bottom_small slds-p-left_medium slds-p-right_medium">
+        </lightning-input>
+
+        <template if:true={Pokemons}>
+
+            <template if:false={isSearchNotAvailable}>
+
+                <lightning-layout multiple-rows="true">
+
+                    <template for:each={Pokemons} for:item="PokemonDetails">
+
+                        <lightning-layout-item key={PokemonDetails.Id} size="3" class="slds-var-p-around_x-small">
+
+                            <lightning-card title={PokemonDetails.Name} class="Pokemon_card">
+                                <div class="slds-var-p-horizontal_small">
+                                    <div class="slds-grid slds-wrap">
+
+                                        <div class="slds-col slds-size_8-of-12">
+                                            <img src={PokemonDetails.Images__c} alt="Pokemon" class="pokemom_images" />
+                                        </div>
+                                        <div class="slds-col slds-size_4-of-12">
+                                            <p class="slds-var-m-bottom_xx-small">{PokemonDetails.Height__c}</p>
+                                            <p class="slds-var-m-bottom_xx-small">{PokemonDetails.Weight__c}</p>
+                                            <p class="slds-var-m-bottom_xx-small">
+                                                <strong>{PokemonDetails.Trainer__r.FirstName}</strong></p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </lightning-card>
+
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </template>
+            <template if:true={isSearchNotAvailable}>
+                <strong>We didnt find any result</strong>
+            </template>
+        </template>
+
+        <template if:true={error}>
+            Error occured during loading pokemon details
+        </template>
+    </lightning-card>
+</template>
