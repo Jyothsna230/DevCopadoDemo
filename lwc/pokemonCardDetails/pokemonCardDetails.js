@@ -5,7 +5,7 @@ export default class PokemonCardDetails extends LightningElement {
 
     Pokemons;
     error;
-    serachvalue ='';
+    serachvalue ='Pokemon';
     isSearchNotAvailable = false;
     
     connectedCallback(){
